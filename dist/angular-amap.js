@@ -1,5 +1,3 @@
-'use strict';
-
 angular.module('angular-amap', [])
     .directive('ngAmap', [function($q) {
 
