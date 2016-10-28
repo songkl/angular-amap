@@ -135,14 +135,14 @@ angular.module('angular-amap', [])
 
                 // add marker to the map
                 marker2.setMap(map);
-                let previousMarker = {marker: marker2, listener: null};
+                var previousMarker = {marker: marker2, listener: null};
                 previousMarkers.push(previousMarker);
 
                 if (!marker.title && !marker.content) {
                     return;
                 }
-                let msg = '<p>${marker.title}</p><p>${marker.content}</p>';
-                let infoWindow2 = new AMap.InfoWindow({
+                var msg = '<p>${marker.title}</p><p>${marker.content}</p>';
+                var infoWindow2 = new AMap.InfoWindow({
                     isCustom: false,
                     autoMove: true,
                     content: msg
