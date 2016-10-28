@@ -52,17 +52,9 @@ angular.module('angular-amap', [])
                   setTimeout(createTag, offlineOpts.retryInterval);
               };
               document.body.appendChild(script);
-              var loadPromise = jQuery.Deferred();
-              script.onload = function(){
-                loadPromise.resolve();
-              }
-              script.onerror = function(){
-                loadPromise.reject();
-              }
-              return loadPromise;
           };
 
-        return  createTag();
+        createTag();
       };
 
       var _validator = function (prop, desc){
@@ -175,8 +167,6 @@ angular.module('angular-amap', [])
             },
             link: function link($scope, element, attrs) {
 
-                console.log($scope);
-
                 var opts = angular.extend({}, _defaults.defaultOpts, $scope.options);
                 var offlineOpts = angular.extend({}, _defaults.defaultOfflineOpts, $scope.offline);
                 $scope.offlineWords = offlineOpts.txt;
@@ -189,19 +179,17 @@ angular.module('angular-amap', [])
                 var map;
                 var previousMarkers = [];
 
-                var loadPromise = _scriptLoader($scope.ak, offlineOpts, function () {
+                _scriptLoader($scope.ak, offlineOpts, function () {
 
                     map = _map.createInstance(opts, element[0]);
 
                     $scope.onMapLoaded({ map: map });
 
-                });
+                    //create markers
+                    previousMarkers = [];
+                    $scope.watchInit();
+                    _map.redrawMarkers(map, previousMarkers, opts);
 
-                loadPromise.then(function(){
-                  //create markers
-                  previousMarkers = [];
-                  $scope.watchInit();
-                  _map.redrawMarkers(map, previousMarkers, opts);
                 });
 
 
