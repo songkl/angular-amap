@@ -194,13 +194,14 @@ angular.module('angular-amap', [])
                     map = _map.createInstance(opts, element[0]);
 
                     $scope.onMapLoaded({ map: map });
-                    loadPromise.then(function(){
-                      //create markers
-                      previousMarkers = [];
-                      $scope.watchInit();
-                      _map.redrawMarkers(map, previousMarkers, opts);
-                    });
 
+                });
+
+                loadPromise.then(function(){
+                  //create markers
+                  previousMarkers = [];
+                  $scope.watchInit();
+                  _map.redrawMarkers(map, previousMarkers, opts);
                 });
 
 
