@@ -1,0 +1,17 @@
+{
+    "name": "angular-amap",
+    "version": "3.0.0",
+    "homepage": "https://github.com/leftstick/angular-amap",
+    "authors": [
+        "Howard.Zuo"
+    ],
+    "description": "An amap directive for AngularJS",
+    "keywords": [
+        "amap",
+        "angular"
+    ],
+    "license": "MIT",
+    "main": [
+      "dist/angular-amap.js"
+    ]
+}
