@@ -17,7 +17,7 @@ angular.module('angular-amap', [])
       };
 
       var _scriptLoader = function(ak, offlineOpts, callback) {
-          var MAP_URL = `http://webapi.amap.com/maps?v=1.3&key=${ak}&callback=amapinit`;
+          var MAP_URL = 'http://webapi.amap.com/maps?v=1.3&key=${ak}&callback=amapinit';
 
           var aMap = window.aMap;
           if (aMap && aMap.status === 'loading') {
@@ -32,7 +32,9 @@ angular.module('angular-amap', [])
           window.amapinit = function() {
               window.aMap.status = 'loaded';
               callback();
-              window.aMap.callbacks.forEach(cb => cb());
+              window.aMap.callbacks.forEach(function (cb) {
+	               return cb();
+	            });
               window.aMap.callbacks = [];
           };
 
@@ -65,19 +67,19 @@ angular.module('angular-amap', [])
 
       var _offline = {
         divStyle : {
-            width: '100%',
-            height: '100%',
-            backgroundColor: '#E6E6E6',
-            position: 'relative',
-            opacity: 0
+            "width": "100%",
+            "height": "100%",
+            "backgroundColor": "#E6E6E6",
+            "position": "relative",
+            "opacity": "0"
         },
         labelStyle : {
-            fontSize: '30px',
-            position: 'absolute',
-            top: '50%',
-            marginTop: 0,
-            left: '50%',
-            marginLeft: 0
+            "fontSize": "30px",
+            "position": "absolute",
+            "top": '50%',
+            "marginTop": "0",
+            "left": "50%",
+            "marginLeft": "0"
         }
       };
 
@@ -139,7 +141,7 @@ angular.module('angular-amap', [])
                 if (!marker.title && !marker.content) {
                     return;
                 }
-                let msg = `<p>${marker.title}</p><p>${marker.content}</p>`;
+                let msg = '<p>${marker.title}</p><p>${marker.content}</p>';
                 let infoWindow2 = new AMap.InfoWindow({
                     isCustom: false,
                     autoMove: true,
