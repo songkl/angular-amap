@@ -181,20 +181,6 @@ angular.module('angular-amap', [])
                 var map;
                 var previousMarkers = [];
 
-                _scriptLoader($scope.ak, offlineOpts, function () {
-
-                    map = _map.createInstance(opts, element[0]);
-
-                    $scope.onMapLoaded({ map: map });
-
-                    //create markers
-                    previousMarkers = [];
-                    $scope.watchInit();
-                    _map.redrawMarkers(map, previousMarkers, opts);
-
-                });
-
-
 
                 $scope.watchInit = function(){
                   $scope.$watch('options.center', function (newValue, oldValue) {
@@ -216,6 +202,19 @@ angular.module('angular-amap', [])
                   }, true);
                 };
 
+
+                _scriptLoader($scope.ak, offlineOpts, function () {
+
+                    map = _map.createInstance(opts, element[0]);
+
+                    $scope.onMapLoaded({ map: map });
+
+                    //create markers
+                    previousMarkers = [];
+                    $scope.watchInit();
+                    _map.redrawMarkers(map, previousMarkers, opts);
+
+                });
 
 
                 $scope.divStyle = _offline.divStyle;
