@@ -141,7 +141,13 @@ angular.module('angular-amap', [])
                 if (!marker.title && !marker.content) {
                     return;
                 }
-                var msg = '<p>${marker.title}</p><p>${marker.content}</p>';
+                var msg = '';
+                if(marker.title){
+                  msg += '<p>'+marker.title+'</p>';
+                }
+                if(marker.content){
+                  msg += '<p>'+marker.content+'</p>';
+                }
                 var infoWindow2 = new AMap.InfoWindow({
                     isCustom: false,
                     autoMove: true,
