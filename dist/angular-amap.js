@@ -138,9 +138,6 @@ angular.module('angular-amap', [])
                 var previousMarker = {marker: marker2, listener: null};
                 previousMarkers.push(previousMarker);
 
-                if (!marker.title && !marker.content) {
-                    return;
-                }
                 var msg = '';
                 if(marker.title){
                   msg += '<p>'+marker.title+'</p>';
